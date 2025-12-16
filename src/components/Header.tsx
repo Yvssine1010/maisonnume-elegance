@@ -83,7 +83,7 @@ export function Header() {
               <img 
                 src={logoImage} 
                 alt="Maisonnume" 
-                className="h-10 lg:h-12 w-auto object-contain"
+                className="h-14 lg:h-20 w-auto object-contain brightness-110 contrast-105"
               />
             </a>
 
