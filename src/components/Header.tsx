@@ -1,7 +1,6 @@
 import { useState, useEffect } from 'react';
-import { Search, User, ShoppingBag, Menu, X, ChevronDown } from 'lucide-react';
+import { Search, ShoppingBag, Menu, X } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
-import logoImage from '@/assets/logo-maisonnuma.jpeg';
 
 const categories = [
   { name: 'Canapés', href: '#canapes' },
@@ -80,11 +79,9 @@ export function Header() {
 
             {/* Logo */}
             <a href="/" className="flex-shrink-0">
-              <img 
-                src={logoImage} 
-                alt="Maisonnume" 
-                className="h-14 lg:h-20 w-auto object-contain brightness-110 contrast-105"
-              />
+              <span className="text-xl lg:text-2xl font-semibold tracking-[0.1em] uppercase text-foreground">
+                Maison<span className="text-gold">numa</span>
+              </span>
             </a>
 
             {/* Desktop Navigation */}
@@ -109,14 +106,6 @@ export function Header() {
               >
                 <Search className="w-5 h-5" />
               </button>
-
-              {/* Account */}
-              <a
-                href="#account"
-                className="hidden sm:block p-2 hover:text-gold transition-colors duration-300"
-              >
-                <User className="w-5 h-5" />
-              </a>
 
               {/* Cart */}
               <a
@@ -203,12 +192,6 @@ export function Header() {
                     {category.name}
                   </motion.a>
                 ))}
-              </div>
-              <div className="mt-12 pt-8 border-t border-border space-y-4">
-                <a href="#account" className="flex items-center space-x-3 text-sm uppercase tracking-widest text-muted-foreground hover:text-foreground transition-colors">
-                  <User className="w-5 h-5" />
-                  <span>Mon compte</span>
-                </a>
               </div>
             </nav>
           </motion.div>
