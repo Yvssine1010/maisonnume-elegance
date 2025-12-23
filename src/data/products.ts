@@ -6,6 +6,7 @@ import productArmchair1 from '@/assets/product-armchair-1.jpg';
 import productArmchair1Alt from '@/assets/product-armchair-1-alt.jpg';
 import productBed1 from '@/assets/product-bed-1.jpg';
 import productBed1Alt from '@/assets/product-bed-1-alt.jpg';
+import productSofaGala from '@/assets/product-sofa-gala.jpeg';
 
 export interface Product {
   id: string;
@@ -29,9 +30,36 @@ export interface Product {
   materials: string[];
   has3D?: boolean;
   spin360Url?: string; // URL Sirv pour vue 360°
+  glbUrl?: string; // URL du modèle 3D GLB
 }
 
 export const products: Product[] = [
+  {
+    id: 'canape-gala-3-places',
+    name: 'Canapé Gala 3 places en chenille beige 210 cm',
+    price: 1499,
+    image: productSofaGala,
+    imageHover: productSofaGala,
+    images: [productSofaGala],
+    category: 'Canapés',
+    isNew: true,
+    description: 'Le canapé Gala offre un confort exceptionnel avec son revêtement en chenille beige et ses coussins généreux. Certifié FSC Mix Credit pour une production responsable.',
+    details: [
+      'Certifié FSC Mix Credit',
+      'Revêtement chenille premium',
+      'Coussins déhoussables',
+      'Structure bois massif',
+      'Vue 3D interactive',
+    ],
+    dimensions: { width: 210, height: 85, depth: 98 },
+    colors: [
+      { name: 'Beige Chenille', hex: '#E8DFD5' },
+      { name: 'Gris Perle', hex: '#C0C0C0' },
+    ],
+    materials: ['Chenille', 'Coton'],
+    has3D: true,
+    glbUrl: 'https://d.media.kavehome.com/image/upload/v1705702666/ar/S821_30_SE12.glb',
+  },
   {
     id: 'chaise-360-test',
     name: 'Chaise Design 360°',
