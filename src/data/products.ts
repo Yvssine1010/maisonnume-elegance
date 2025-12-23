@@ -28,9 +28,38 @@ export interface Product {
   colors: { name: string; hex: string }[];
   materials: string[];
   has3D?: boolean;
+  spin360Url?: string; // URL Sirv pour vue 360°
 }
 
 export const products: Product[] = [
+  {
+    id: 'chaise-360-test',
+    name: 'Chaise Design 360°',
+    price: 599,
+    image: 'https://yvssineeeee.sirv.com/Images/images/DSC06035.jpg',
+    imageHover: 'https://yvssineeeee.sirv.com/Images/images/DSC06038.jpg',
+    images: [
+      'https://yvssineeeee.sirv.com/Images/images/DSC06035.jpg',
+      'https://yvssineeeee.sirv.com/Images/images/DSC06038.jpg',
+    ],
+    category: 'Chaises',
+    isNew: true,
+    description: 'Découvrez notre chaise design avec vue 360° interactive. Un savoir-faire artisanal français pour un confort exceptionnel.',
+    details: [
+      'Vue 360° interactive',
+      'Design contemporain',
+      'Fabrication artisanale',
+      'Matériaux premium',
+    ],
+    dimensions: { width: 55, height: 85, depth: 50 },
+    colors: [
+      { name: 'Naturel', hex: '#D4C4B0' },
+      { name: 'Noir', hex: '#1A1A1A' },
+    ],
+    materials: ['Bois massif', 'Tissu premium'],
+    has3D: true,
+    spin360Url: 'https://yvssineeeee.sirv.com/Images/images/images.spin',
+  },
   {
     id: 'canape-oslo',
     name: 'Canapé Oslo',

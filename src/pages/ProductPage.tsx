@@ -6,9 +6,9 @@ import { Header } from '@/components/Header';
 import { Footer } from '@/components/Footer';
 import { Button } from '@/components/ui/button';
 import { Product3DViewer } from '@/components/Product3DViewer';
+import { Sirv360Viewer } from '@/components/Sirv360Viewer';
 import { getProductById, products } from '@/data/products';
 import { ProductCard } from '@/components/ProductCard';
-
 export default function ProductPage() {
   const { productId } = useParams<{ productId: string }>();
   const product = getProductById(productId || '');
@@ -65,9 +65,11 @@ export default function ProductPage() {
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.6 }}
             >
-              {/* Main Image or 3D Viewer */}
+              {/* Main Image or 3D/360 Viewer */}
               <div className="relative aspect-square bg-secondary mb-4 overflow-hidden">
-                {show3D && product.has3D ? (
+                {show3D && product.spin360Url ? (
+                  <Sirv360Viewer spinUrl={product.spin360Url} productName={product.name} />
+                ) : show3D && product.has3D ? (
                   <Product3DViewer productName={product.name} fallbackImage={product.image} />
                 ) : (
                   <motion.img
@@ -81,7 +83,7 @@ export default function ProductPage() {
                 )}
                 
                 {/* Badges */}
-                <div className="absolute top-4 left-4 flex flex-col gap-2">
+                <div className="absolute top-4 left-4 flex flex-col gap-2 z-20">
                   {product.isNew && (
                     <span className="bg-gold text-ivory text-xs uppercase tracking-widest px-3 py-1.5 font-medium">
                       Nouveau
@@ -94,17 +96,17 @@ export default function ProductPage() {
                   )}
                 </div>
 
-                {/* 3D Toggle */}
-                {product.has3D && (
+                {/* 3D/360 Toggle */}
+                {(product.has3D || product.spin360Url) && (
                   <button
                     onClick={() => setShow3D(!show3D)}
-                    className={`absolute top-4 right-4 px-4 py-2 text-xs uppercase tracking-wider font-medium transition-all ${
+                    className={`absolute top-4 right-4 z-20 px-4 py-2 text-xs uppercase tracking-wider font-medium transition-all ${
                       show3D 
                         ? 'bg-gold text-ivory' 
                         : 'bg-charcoal/80 text-ivory hover:bg-charcoal'
                     }`}
                   >
-                    {show3D ? 'Vue Photo' : 'Vue 3D'}
+                    {show3D ? 'Vue Photo' : (product.spin360Url ? 'Vue 360°' : 'Vue 3D')}
                   </button>
                 )}
               </div>
@@ -122,14 +124,14 @@ export default function ProductPage() {
                     <img src={img} alt="" className="w-full h-full object-cover" />
                   </button>
                 ))}
-                {product.has3D && (
+                {(product.has3D || product.spin360Url) && (
                   <button
                     onClick={() => setShow3D(true)}
                     className={`w-20 h-20 bg-charcoal flex items-center justify-center transition-all ${
                       show3D ? 'ring-2 ring-gold' : 'opacity-70 hover:opacity-100'
                     }`}
                   >
-                    <span className="text-ivory text-xs font-medium">3D</span>
+                    <span className="text-ivory text-xs font-medium">{product.spin360Url ? '360°' : '3D'}</span>
                   </button>
                 )}
               </div>
