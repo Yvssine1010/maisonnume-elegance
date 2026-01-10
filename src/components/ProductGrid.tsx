@@ -22,14 +22,15 @@ interface ProductGridProps {
   products: Product[];
   showViewAll?: boolean;
   viewAllHref?: string;
+  id?: string;
 }
 
-export function ProductGrid({ title, subtitle, products, showViewAll = true, viewAllHref = '#' }: ProductGridProps) {
+export function ProductGrid({ title, subtitle, products, showViewAll = true, viewAllHref = '#', id }: ProductGridProps) {
   const containerRef = useRef<HTMLDivElement>(null);
   const isInView = useInView(containerRef, { once: true, margin: '-100px' });
 
   return (
-    <section ref={containerRef} className="py-20 lg:py-32 bg-background">
+    <section id={id} ref={containerRef} className="py-20 lg:py-32 bg-background">
       <div className="container mx-auto px-4 lg:px-8">
         {/* Header */}
         <motion.div

@@ -38,7 +38,7 @@ const Index = () => {
         subtitle="Collection 2024"
         title="L'art de vivre à la française"
         ctaText="Découvrir la collection"
-        ctaHref="#collections"
+        ctaHref="#bestsellers"
       />
 
       {/* Features Bar */}
@@ -49,6 +49,7 @@ const Index = () => {
 
       {/* Featured Products */}
       <ProductGrid
+        id="bestsellers"
         title="Nos Best-Sellers"
         subtitle="Les pièces les plus appréciées"
         products={featuredProducts}
