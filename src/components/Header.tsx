@@ -18,18 +18,30 @@ const promoMessages = [
 ];
 
 export function Header() {
-  const [isScrolled, setIsScrolled] = useState(false);
+  const [isVisible, setIsVisible] = useState(true);
+  const [lastScrollY, setLastScrollY] = useState(0);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [currentPromo, setCurrentPromo] = useState(0);
   const [isSearchOpen, setIsSearchOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50);
+      const currentScrollY = window.scrollY;
+      
+      // Show header when at top or scrolling up, hide when scrolling down
+      if (currentScrollY < 50) {
+        setIsVisible(true);
+      } else if (currentScrollY > lastScrollY) {
+        setIsVisible(false); // Scrolling down
+      } else {
+        setIsVisible(true); // Scrolling up
+      }
+      
+      setLastScrollY(currentScrollY);
     };
-    window.addEventListener('scroll', handleScroll);
+    window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+  }, [lastScrollY]);
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -57,10 +69,8 @@ export function Header() {
 
       {/* Main Header */}
       <header
-        className={`fixed top-8 left-0 right-0 z-40 transition-all duration-500 ${
-          isScrolled
-            ? 'bg-background/95 backdrop-blur-md shadow-sm'
-            : 'bg-transparent'
+        className={`fixed top-8 left-0 right-0 z-40 transition-all duration-500 bg-white shadow-sm ${
+          isVisible ? 'translate-y-0' : '-translate-y-full'
         }`}
       >
         <div className="container mx-auto px-4 lg:px-8">
@@ -145,8 +155,7 @@ export function Header() {
         </AnimatePresence>
 
         {/* Category Bar (Desktop) */}
-        <div className={`hidden lg:block border-t border-border/50 transition-all duration-500 ${
-          isScrolled ? 'bg-background/95' : 'bg-background/80 backdrop-blur-sm'
+        <div className={`hidden lg:block border-t border-border/50 transition-all duration-500 bg-white
         }`}>
           <div className="container mx-auto px-4 lg:px-8">
             <div className="flex items-center justify-center space-x-12 h-12">
