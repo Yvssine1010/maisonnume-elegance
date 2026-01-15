@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
-import { Search, ShoppingBag, Menu, X } from 'lucide-react';
+import { Search, ShoppingBag, Menu, X, ChevronDown } from 'lucide-react';
+import { Link } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 
 const categories = [
@@ -155,8 +156,7 @@ export function Header() {
         </AnimatePresence>
 
         {/* Category Bar (Desktop) */}
-        <div className={`hidden lg:block border-t border-border/50 transition-all duration-500 bg-white
-        }`}>
+        <div className="hidden lg:block border-t border-border/50 transition-all duration-500 bg-white">
           <div className="container mx-auto px-4 lg:px-8">
             <div className="flex items-center justify-center space-x-12 h-12">
               <a href="#nouveautes" className="text-xs uppercase tracking-[0.15em] font-medium text-gold hover:text-gold-dark transition-colors">
@@ -168,9 +168,28 @@ export function Header() {
               <a href="#promotions" className="text-xs uppercase tracking-[0.15em] font-medium text-foreground hover:text-gold transition-colors">
                 Promotions
               </a>
-              <a href="#collections" className="text-xs uppercase tracking-[0.15em] font-medium text-foreground hover:text-gold transition-colors">
-                Collections
-              </a>
+              
+              {/* À propos dropdown */}
+              <div className="relative group">
+                <button className="flex items-center gap-1 text-xs uppercase tracking-[0.15em] font-medium text-foreground hover:text-gold transition-colors">
+                  À propos
+                  <ChevronDown className="w-3 h-3 transition-transform group-hover:rotate-180" />
+                </button>
+                <div className="absolute top-full left-1/2 -translate-x-1/2 pt-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300">
+                  <div className="bg-white shadow-lg border border-border/50 py-2 min-w-[180px]">
+                    <Link 
+                      to="/notre-histoire" 
+                      className="block px-4 py-2 text-xs uppercase tracking-[0.1em] text-foreground hover:text-gold hover:bg-cream transition-colors"
+                    >
+                      Notre Histoire
+                    </Link>
+                  </div>
+                </div>
+              </div>
+
+              <Link to="/contact" className="text-xs uppercase tracking-[0.15em] font-medium text-foreground hover:text-gold transition-colors">
+                Contactez-nous
+              </Link>
             </div>
           </div>
         </div>
