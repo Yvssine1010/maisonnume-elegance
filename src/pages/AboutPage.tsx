@@ -4,7 +4,6 @@ import { useState, useEffect, useRef } from 'react';
 import {
   Sofa,
   Shield,
-  Heart,
   Tag,
   Star,
   ArrowRight,
@@ -14,6 +13,8 @@ import {
   CheckCircle,
   Truck,
   Clock,
+  Home,
+  Heart,
 } from 'lucide-react';
 import { motion, useScroll, useTransform, useInView, useSpring } from 'framer-motion';
 
@@ -314,30 +315,27 @@ const AboutPage = () => {
                   alt="Collection Maisonnuma"
                   className="w-full h-[600px] object-cover transition-transform duration-700 group-hover:scale-105"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-charcoal/60 via-transparent to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-t from-charcoal/80 via-charcoal/20 to-transparent" />
                 <div className="absolute bottom-8 left-8 right-8">
-                  <span className="inline-flex items-center gap-2 text-white/80 text-sm uppercase tracking-wider mb-2">
-                    <Star className="w-4 h-4 text-gold" />
+                  <motion.span 
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: 0.3, duration: 0.6 }}
+                    className="inline-block text-gold text-sm uppercase tracking-[0.3em] font-medium mb-3"
+                  >
                     Collection 2024
-                  </span>
-                  <h3 className="text-2xl font-light text-white">Notre Univers</h3>
+                  </motion.span>
+                  <motion.h3 
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: 0.5, duration: 0.6 }}
+                    className="text-3xl md:text-4xl font-light text-white"
+                  >
+                    Notre Univers
+                  </motion.h3>
                 </div>
-
-                {/* Floating accent elements */}
-                <motion.div
-                  animate={{ y: [0, -10, 0] }}
-                  transition={{ repeat: Infinity, duration: 3, ease: "easeInOut" }}
-                  className="absolute top-8 right-8 w-16 h-16 rounded-full bg-gold/20 backdrop-blur-sm flex items-center justify-center"
-                >
-                  <Sparkles className="w-8 h-8 text-gold" />
-                </motion.div>
-                <motion.div
-                  animate={{ y: [0, 10, 0] }}
-                  transition={{ repeat: Infinity, duration: 4, ease: "easeInOut", delay: 0.5 }}
-                  className="absolute bottom-32 left-8 w-12 h-12 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center"
-                >
-                  <Heart className="w-6 h-6 text-white" />
-                </motion.div>
               </div>
             </motion.div>
 
@@ -425,7 +423,8 @@ const AboutPage = () => {
       </section>
 
       {/* Brand Name Meaning */}
-      <section className="py-20 lg:py-28 bg-charcoal text-white relative overflow-hidden">
+      <section className="py-24 lg:py-32 bg-charcoal text-white relative overflow-hidden">
+        {/* Animated background elements */}
         <motion.div
           animate={{ rotate: 360 }}
           transition={{ repeat: Infinity, duration: 60, ease: "linear" }}
@@ -436,6 +435,11 @@ const AboutPage = () => {
           transition={{ repeat: Infinity, duration: 80, ease: "linear" }}
           className="absolute -bottom-40 -left-40 w-96 h-96 border border-gold/10 rounded-full"
         />
+        <motion.div
+          animate={{ scale: [1, 1.2, 1], opacity: [0.3, 0.6, 0.3] }}
+          transition={{ repeat: Infinity, duration: 4, ease: "easeInOut" }}
+          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-gold/5 rounded-full blur-3xl"
+        />
 
         <div className="container mx-auto px-4 lg:px-8 relative z-10">
           <motion.div
@@ -443,44 +447,135 @@ const AboutPage = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
-            className="max-w-3xl mx-auto text-center"
+            className="max-w-4xl mx-auto text-center"
           >
-            <span className="text-gold uppercase tracking-[0.3em] text-sm font-medium mb-6 block">
-              Notre Nom
-            </span>
-            <h2 className="text-3xl md:text-4xl font-light mb-12">
-              Maison<span className="text-gold">numa</span> : un nom, une promesse
-            </h2>
+            {/* Badge */}
+            <motion.div
+              initial={{ opacity: 0, scale: 0.8 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.1, duration: 0.5 }}
+              className="inline-flex items-center gap-3 px-6 py-2 rounded-full bg-gold/10 border border-gold/20 mb-8"
+            >
+              <Sparkles className="w-4 h-4 text-gold" />
+              <span className="text-gold uppercase tracking-[0.25em] text-xs font-medium">
+                Notre Nom
+              </span>
+            </motion.div>
+
+            {/* Title with elegant styling */}
+            <motion.h2 
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.2, duration: 0.6 }}
+              className="text-4xl md:text-5xl lg:text-6xl font-light mb-6"
+            >
+              <span className="text-white">Maison</span>
+              <span className="text-gold italic">numa</span>
+            </motion.h2>
             
-            <div className="grid md:grid-cols-2 gap-8 text-left">
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.3, duration: 0.6 }}
+              className="text-xl md:text-2xl text-white/60 font-light mb-16"
+            >
+              Un nom, une promesse
+            </motion.p>
+            
+            {/* Cards with enhanced styling */}
+            <div className="grid md:grid-cols-2 gap-8 text-left mb-16">
               <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
+                initial={{ opacity: 0, x: -30 }}
+                whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
-                transition={{ delay: 0.2 }}
-                className="p-6 rounded-2xl bg-white/5 border border-white/10"
+                transition={{ delay: 0.4, duration: 0.6 }}
+                className="group relative p-8 rounded-3xl bg-gradient-to-br from-white/10 to-white/5 border border-white/10 backdrop-blur-sm hover:border-gold/30 transition-all duration-500"
               >
-                <span className="text-2xl font-light text-gold mb-4 block">Maison</span>
-                <p className="text-white/70 leading-relaxed">
-                  Ce mot qui évoque le foyer, l'intime, le refuge. L'endroit où l'on se retrouve vraiment, 
-                  où chaque objet raconte une partie de notre histoire.
-                </p>
+                <div className="absolute inset-0 rounded-3xl bg-gradient-to-br from-gold/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                <div className="relative">
+                  <div className="flex items-center gap-4 mb-4">
+                    <div className="w-12 h-12 rounded-2xl bg-gold/20 flex items-center justify-center">
+                      <Home className="w-6 h-6 text-gold" />
+                    </div>
+                    <span className="text-3xl font-light text-gold">Maison</span>
+                  </div>
+                  <p className="text-white/70 leading-relaxed text-lg">
+                    Ce mot qui évoque le foyer, l'intime, le refuge. L'endroit où l'on se retrouve vraiment, 
+                    où chaque objet raconte une partie de notre histoire.
+                  </p>
+                </div>
               </motion.div>
               
               <motion.div
+                initial={{ opacity: 0, x: 30 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: 0.5, duration: 0.6 }}
+                className="group relative p-8 rounded-3xl bg-gradient-to-br from-white/10 to-white/5 border border-white/10 backdrop-blur-sm hover:border-gold/30 transition-all duration-500"
+              >
+                <div className="absolute inset-0 rounded-3xl bg-gradient-to-br from-gold/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                <div className="relative">
+                  <div className="flex items-center gap-4 mb-4">
+                    <div className="w-12 h-12 rounded-2xl bg-gold/20 flex items-center justify-center">
+                      <Sparkles className="w-6 h-6 text-gold" />
+                    </div>
+                    <span className="text-3xl font-light text-gold">Numa</span>
+                  </div>
+                  <p className="text-white/70 leading-relaxed text-lg">
+                    La fluidité du numérique, une douceur contemporaine, une nouvelle façon de concevoir 
+                    l'ameublement. Une syllabe qui chante, qui apaise, qui invite au voyage intérieur.
+                  </p>
+                </div>
+              </motion.div>
+            </div>
+
+            {/* Enhanced Quote Section */}
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.6, duration: 0.8 }}
+              className="relative"
+            >
+              <motion.div
+                initial={{ scaleX: 0 }}
+                whileInView={{ scaleX: 1 }}
+                viewport={{ once: true }}
+                transition={{ delay: 0.8, duration: 0.6 }}
+                className="w-24 h-[2px] bg-gradient-to-r from-transparent via-gold to-transparent mx-auto mb-8"
+              />
+              <motion.blockquote
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ delay: 0.4 }}
-                className="p-6 rounded-2xl bg-white/5 border border-white/10"
+                transition={{ delay: 1, duration: 0.6 }}
+                className="relative"
               >
-                <span className="text-2xl font-light text-gold mb-4 block">Numa</span>
-                <p className="text-white/70 leading-relaxed">
-                  La fluidité du numérique, une douceur contemporaine, une nouvelle façon de concevoir 
-                  l'ameublement. Une syllabe qui chante, qui apaise, qui invite au voyage intérieur.
+                <span className="absolute -top-8 left-1/2 -translate-x-1/2 text-8xl text-gold/20 font-serif leading-none">"</span>
+                <p className="text-2xl md:text-3xl font-light text-white leading-relaxed italic max-w-2xl mx-auto">
+                  Ensemble, ils forment bien plus qu'un nom : 
+                  <motion.span
+                    initial={{ opacity: 0, y: 10 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: 1.2, duration: 0.5 }}
+                    className="text-gold not-italic font-medium block mt-2"
+                  >
+                    une vision du beau accessible.
+                  </motion.span>
                 </p>
-              </motion.div>
-            </div>
+              </motion.blockquote>
+              <motion.div
+                initial={{ scaleX: 0 }}
+                whileInView={{ scaleX: 1 }}
+                viewport={{ once: true }}
+                transition={{ delay: 1.4, duration: 0.6 }}
+                className="w-24 h-[2px] bg-gradient-to-r from-transparent via-gold to-transparent mx-auto mt-8"
+              />
+            </motion.div>
           </motion.div>
         </div>
       </section>
