@@ -301,28 +301,28 @@ const AboutPage = () => {
                 ))}
             </div>
 
-            {/* Center Image */}
+            {/* Center Image - Now visible on mobile */}
             <motion.div
               initial={{ opacity: 0, scale: 0.9 }}
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: false }}
               transition={{ duration: 0.8 }}
-              className="relative lg:row-span-2 hidden lg:block"
+              className="relative lg:row-span-2 order-first lg:order-none mb-8 lg:mb-0"
             >
-              <div className="relative rounded-3xl overflow-hidden shadow-2xl group">
+              <div className="relative rounded-2xl lg:rounded-3xl overflow-hidden shadow-xl lg:shadow-2xl group">
                 <img
                   src={productSofa1}
                   alt="Collection Maisonnuma"
-                  className="w-full h-[600px] object-cover transition-transform duration-700 group-hover:scale-105"
+                  className="w-full h-[300px] sm:h-[400px] lg:h-[600px] object-cover transition-transform duration-700 group-hover:scale-105"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-charcoal/80 via-charcoal/20 to-transparent" />
-                <div className="absolute bottom-8 left-8 right-8">
+                <div className="absolute bottom-4 left-4 right-4 sm:bottom-6 sm:left-6 sm:right-6 lg:bottom-8 lg:left-8 lg:right-8">
                   <motion.span 
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     transition={{ delay: 0.3, duration: 0.6 }}
-                    className="inline-block text-gold text-sm uppercase tracking-[0.3em] font-medium mb-3"
+                    className="inline-block text-gold text-xs sm:text-sm uppercase tracking-[0.2em] sm:tracking-[0.3em] font-medium mb-2 sm:mb-3"
                   >
                     Collection 2024
                   </motion.span>
@@ -331,7 +331,7 @@ const AboutPage = () => {
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     transition={{ delay: 0.5, duration: 0.6 }}
-                    className="text-3xl md:text-4xl font-light text-white"
+                    className="text-2xl sm:text-3xl lg:text-4xl font-light text-white"
                   >
                     Notre Univers
                   </motion.h3>
@@ -469,7 +469,7 @@ const AboutPage = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.2, duration: 0.6 }}
-              className="text-4xl md:text-5xl lg:text-6xl font-light mb-6"
+              className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-light mb-4 sm:mb-6"
             >
               <span className="text-white">Maison</span>
               <span className="text-gold italic">numa</span>
@@ -480,29 +480,29 @@ const AboutPage = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.3, duration: 0.6 }}
-              className="text-xl md:text-2xl text-white/60 font-light mb-16"
+              className="text-lg sm:text-xl md:text-2xl text-white/60 font-light mb-10 sm:mb-16"
             >
               Un nom, une promesse
             </motion.p>
             
             {/* Cards with enhanced styling */}
-            <div className="grid md:grid-cols-2 gap-8 text-left mb-16">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6 lg:gap-8 text-left mb-10 sm:mb-16">
               <motion.div
                 initial={{ opacity: 0, x: -30 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: 0.4, duration: 0.6 }}
-                className="group relative p-8 rounded-3xl bg-gradient-to-br from-white/10 to-white/5 border border-white/10 backdrop-blur-sm hover:border-gold/30 transition-all duration-500"
+                className="group relative p-5 sm:p-6 lg:p-8 rounded-2xl lg:rounded-3xl bg-gradient-to-br from-white/10 to-white/5 border border-white/10 backdrop-blur-sm hover:border-gold/30 transition-all duration-500"
               >
-                <div className="absolute inset-0 rounded-3xl bg-gradient-to-br from-gold/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                <div className="absolute inset-0 rounded-2xl lg:rounded-3xl bg-gradient-to-br from-gold/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                 <div className="relative">
-                  <div className="flex items-center gap-4 mb-4">
-                    <div className="w-12 h-12 rounded-2xl bg-gold/20 flex items-center justify-center">
-                      <Home className="w-6 h-6 text-gold" />
+                  <div className="flex items-center gap-3 sm:gap-4 mb-3 sm:mb-4">
+                    <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-xl lg:rounded-2xl bg-gold/20 flex items-center justify-center">
+                      <Home className="w-5 h-5 sm:w-6 sm:h-6 text-gold" />
                     </div>
-                    <span className="text-3xl font-light text-gold">Maison</span>
+                    <span className="text-2xl sm:text-3xl font-light text-gold">Maison</span>
                   </div>
-                  <p className="text-white/70 leading-relaxed text-lg">
+                  <p className="text-white/70 leading-relaxed text-base sm:text-lg">
                     Ce mot qui évoque le foyer, l'intime, le refuge. L'endroit où l'on se retrouve vraiment, 
                     où chaque objet raconte une partie de notre histoire.
                   </p>
@@ -514,17 +514,17 @@ const AboutPage = () => {
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: 0.5, duration: 0.6 }}
-                className="group relative p-8 rounded-3xl bg-gradient-to-br from-white/10 to-white/5 border border-white/10 backdrop-blur-sm hover:border-gold/30 transition-all duration-500"
+                className="group relative p-5 sm:p-6 lg:p-8 rounded-2xl lg:rounded-3xl bg-gradient-to-br from-white/10 to-white/5 border border-white/10 backdrop-blur-sm hover:border-gold/30 transition-all duration-500"
               >
-                <div className="absolute inset-0 rounded-3xl bg-gradient-to-br from-gold/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                <div className="absolute inset-0 rounded-2xl lg:rounded-3xl bg-gradient-to-br from-gold/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                 <div className="relative">
-                  <div className="flex items-center gap-4 mb-4">
-                    <div className="w-12 h-12 rounded-2xl bg-gold/20 flex items-center justify-center">
-                      <Sparkles className="w-6 h-6 text-gold" />
+                  <div className="flex items-center gap-3 sm:gap-4 mb-3 sm:mb-4">
+                    <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-xl lg:rounded-2xl bg-gold/20 flex items-center justify-center">
+                      <Sparkles className="w-5 h-5 sm:w-6 sm:h-6 text-gold" />
                     </div>
-                    <span className="text-3xl font-light text-gold">Numa</span>
+                    <span className="text-2xl sm:text-3xl font-light text-gold">Numa</span>
                   </div>
-                  <p className="text-white/70 leading-relaxed text-lg">
+                  <p className="text-white/70 leading-relaxed text-base sm:text-lg">
                     La fluidité du numérique, une douceur contemporaine, une nouvelle façon de concevoir 
                     l'ameublement. Une syllabe qui chante, qui apaise, qui invite au voyage intérieur.
                   </p>
@@ -545,17 +545,17 @@ const AboutPage = () => {
                 whileInView={{ scaleX: 1 }}
                 viewport={{ once: true }}
                 transition={{ delay: 0.8, duration: 0.6 }}
-                className="w-24 h-[2px] bg-gradient-to-r from-transparent via-gold to-transparent mx-auto mb-8"
+                className="w-16 sm:w-24 h-[2px] bg-gradient-to-r from-transparent via-gold to-transparent mx-auto mb-6 sm:mb-8"
               />
               <motion.blockquote
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: 1, duration: 0.6 }}
-                className="relative"
+                className="relative px-4 sm:px-0"
               >
-                <span className="absolute -top-8 left-1/2 -translate-x-1/2 text-8xl text-gold/20 font-serif leading-none">"</span>
-                <p className="text-2xl md:text-3xl font-light text-white leading-relaxed italic max-w-2xl mx-auto">
+                <span className="absolute -top-4 sm:-top-8 left-1/2 -translate-x-1/2 text-5xl sm:text-8xl text-gold/20 font-serif leading-none">"</span>
+                <p className="text-xl sm:text-2xl md:text-3xl font-light text-white leading-relaxed italic max-w-2xl mx-auto">
                   Ensemble, ils forment bien plus qu'un nom : 
                   <motion.span
                     initial={{ opacity: 0, y: 10 }}
@@ -573,7 +573,7 @@ const AboutPage = () => {
                 whileInView={{ scaleX: 1 }}
                 viewport={{ once: true }}
                 transition={{ delay: 1.4, duration: 0.6 }}
-                className="w-24 h-[2px] bg-gradient-to-r from-transparent via-gold to-transparent mx-auto mt-8"
+                className="w-16 sm:w-24 h-[2px] bg-gradient-to-r from-transparent via-gold to-transparent mx-auto mt-6 sm:mt-8"
               />
             </motion.div>
           </motion.div>
